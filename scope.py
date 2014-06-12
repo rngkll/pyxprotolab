@@ -13,10 +13,8 @@ ser.stopbits = 1
 ser.open()
 if ser.isOpen():
     print("Connected to port", ser.name)
-#    print(bytearray('a','ascii')
     ser.write(b'r') #write only accepts bytes
     print(ser.readline(256)) #amount of bytes to read are in the xprotolab manual
-
+    ser.close()
 else:
     ser.close()
-#print(ser.readline())
