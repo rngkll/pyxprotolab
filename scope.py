@@ -1,27 +1,15 @@
 #!/usr/bin/env python3
 import serial
 import xprotolab_controller
-
+from time import sleep
 test = xprotolab_controller.XprotolabController()
 
 print(test.__doc__)
-#test.connect
-#print(test.show_version)
-
-#declare serial port and configuration
-#~ print(serial.VERSION)
-#ser = serial.Serial()
-#ser.baudrate = 115200
-#ser.port = '/dev/ttyUSB0'
-#ser.bytesize = 8
-#ser.parity = 'N'
-#ser.stopbits = 1
-#
-#ser.open()
-#if ser.isOpen():
-#    print("Connected to port", ser.name)
-#    ser.write(b'r') #write only accepts bytes
-#    print(ser.readline(256)) #amount of bytes to read are in the xprotolab manual
-#    ser.close()
-#else:
-#    ser.close()
+#sleep(15)
+print(test.show_version())
+print(test.RequestSettings())
+test.write_settings()
+test.StopScope()
+sleep(5)
+test.StartScope()
+#sleep(15)
