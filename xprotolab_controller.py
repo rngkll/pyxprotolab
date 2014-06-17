@@ -8,7 +8,8 @@ import sys
 #~ print(serial.VERSION)
 if sys.version_info >= (3, 0):
     def data(string):
-        return bytes(string, 'latin1')
+        return bytes(string, 'utf-8')
+        #return serial.to_bytes(string)
 else:
         def data(string): return string 
 
@@ -40,12 +41,15 @@ class XprotolabController:
 
     def show_version(self):
         self.ser.write(data('a'))
-#        print(serial.to_bytes([0x31, 0x0a, 0x32, 0x0a, 0x33, 0x0a]))
         return self.ser.readline(4)
 
     def RequestSettings(self):
         self.ser.write(data('u'))
-        return self.ser.readline(44)
+        print(self.ser.readline(3))
+        print(self.ser.readline(3))
+        print(self.ser.readline(5))
+        print(self.ser.readline(10))
+        print(self.ser.readline(8))
 
     def Request_CH1(self):
         self.ser.write(data('r'))
@@ -54,6 +58,9 @@ class XprotolabController:
     def Request_CH2(self):
         self.ser.write(data('s'))
         return self.ser.readline(256)
+
+    def increaseCH1gain(self):
+        self.ser.write(data('7'))
 
     def StopScope(self):
         self.ser.write(data('f'))
