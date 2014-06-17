@@ -40,7 +40,7 @@ class XprotolabController:
 
     def show_version(self):
         self.ser.write(data('a'))
-        print(serial.to_bytes([0x31, 0x0a, 0x32, 0x0a, 0x33, 0x0a]))
+#        print(serial.to_bytes([0x31, 0x0a, 0x32, 0x0a, 0x33, 0x0a]))
         return self.ser.readline(4)
 
     def RequestSettings(self):
