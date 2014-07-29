@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 import serial
+from usbConnect import usbConnect
 
 #declare serial port and configuration
 #~ print(serial.VERSION)
 ser = serial.Serial()
 ser.baudrate = 115200
-ser.port = '/dev/ttyUSB0'
+ser.port = usbConnect()
 ser.bytesize = 8
 ser.parity = 'N'
 ser.stopbits = 1
