@@ -30,7 +30,9 @@ while read -u 6 f ;do
    sleep 1
 done
 
+Reference
 
+http://www.blendedtechnologies.com/realtime-plot-of-arduino-serial-data-using-python
 
 //////////////////  matplotlib with wxPython 
 Reference   http://eli.thegreenplace.net/2008/08/01/matplotlib-with-wxpython-guis/
