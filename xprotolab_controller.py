@@ -4,6 +4,7 @@ import serial
 #import threading
 #import time
 import sys
+from usbConnect import usbConnect
 
 #~ print(serial.VERSION)
 if sys.version_info >= (3, 0):
@@ -22,7 +23,7 @@ class XprotolabController:
 
     def connect(self):
         self.ser.baudrate = 115200
-        self.ser.port = '/dev/ttyUSB0'
+        self.ser.port = usbConnect()
         self.ser.bytesize = 8
         self.ser.parity = 'N'
         self.ser.stopbits = 1
