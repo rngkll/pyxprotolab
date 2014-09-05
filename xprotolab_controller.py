@@ -46,11 +46,29 @@ class XprotolabController:
 
     def RequestSettings(self):
         self.ser.write(data('u'))
-        print(self.ser.readline(3))
-        print(self.ser.readline(3))
-        print(self.ser.readline(5))
-        print(self.ser.readline(10))
-        print(self.ser.readline(8))
+        for byte in self.ser.readline(43):
+            print(byte)
+        #print("Channel 1 settings:")
+        #print("Channel Position: ",self.ser.readline(1))
+        #print("Bitfield: ",self.ser.readline(1))
+        #print("Channel Gain: ",self.ser.readline(1))
+        #
+        #print("Channel 2 settings:")
+        #print("Channel Position: ",self.ser.readline(1))
+        #print("Bitfield: ",self.ser.readline(1))
+        #print("Channel Gain: ",self.ser.readline(1))
+
+        #print("Channel D settings:")
+        #print("Channel Position: ",self.ser.readline(1))
+        #print("Input mask: ",self.ser.readline(1))
+        #print("Option: ",self.ser.readline(1))
+        #print("Decode parameter: ",self.ser.readline(1))
+        #print("Decode option: ",self.ser.readline(1))
+
+        #print("General settings: ",self.ser.readline(10))
+        #
+        #print("AWG settings: ",self.ser.readline(8))
+        #print("Extras: ",self.ser.readline(14))
 
     def Request_CH1(self):
         self.ser.write(data('r'))
@@ -74,8 +92,6 @@ class XprotolabController:
 
     def write_settings(self):
         self.ser.write(data('b78'))
-        #self.ser.write(data(index))
-        #self.ser.write(data(data))
 
     def restore_factory_settings(self):
         self.ser.write(data('k'))
