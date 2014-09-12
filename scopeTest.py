@@ -47,15 +47,14 @@ if action == "Scope":
     CH1 = []
     CH2 = []
     for i in valCH1:
-        CH1.append(dataControl(i,zoom))
+        CH1.append(i)
     
     for i in valCH2:
-        CH2.append(dataControl(i,zoom))
-    
-    pl.plot(CH1)
-    pl.plot(CH2)
-    pl.ylabel('Values of test.py')
-    pl.xlabel('Numbers')
+        CH2.append(i)
+
+    pl.plot(CH1,'r', CH2, 'g')
+    pl.ylabel('Red - CH1 & Green - CH2')
+    pl.xlabel('')
     pl.show()
 
 elif action == "Meter":
@@ -64,12 +63,17 @@ elif action == "Meter":
     CH1 = []
     
     for i in valCH1:
-        CH1.append(dataControl(i))
+        CH1.append(i)
     
-    pl.plot(CH1)
-    pl.ylabel('Voltage')
-    pl.xlabel('Times')
-    pl.show()
+    from tkinter import *
+
+    root=Tk()
+    text=Text(root, height=20, width=60)
+    text.insert(END, "- 12.000", 'big')
+    text.pack(side=BOTTOM)
+
+    text.tag_configure('big', font=('Arial', 60, 'bold', 'italic'), justify='center')
+    root.mainloop()
 
 else:
     print("This action is not valid, Try again")
