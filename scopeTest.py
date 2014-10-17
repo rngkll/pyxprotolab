@@ -38,26 +38,35 @@ test.restore_factory_settings()
 l = test.RequestSettings()
 print(l)
 zoom = 100
-action = input("Please enter the mode (Scope or Meter)\n")
-if action == "Scope":
+action = 0
+try:
+    action = int(input("Please enter the number of the mode (0 [Scope] or 1 [Meter])\n"))
+except:
+    print('Its not a valid opcion')
+if action is 0:
     #Read Channel_CH1
     valCH1=test.Request_CH1()
+    valCH1=valCH1[40:]
     #Read Channel_CH2
     valCH2=test.Request_CH2()
+    valCH2=valCH2[40:]
+    print(valCH1,'Values for CH1')
+    print(valCH2,'values for CH2')
     CH1 = []
     CH2 = []
     for i in valCH1:
-        CH1.append(i)
+        print(dataControl(i))
+        CH1.append(dataControl(i))
     
     for i in valCH2:
-        CH2.append(i)
+        CH2.append(dataControl(i))
 
     pl.plot(CH1,'r', CH2, 'g')
     pl.ylabel('Red - CH1 & Green - CH2')
     pl.xlabel('')
     pl.show()
 
-elif action == "Meter":
+elif action is 1:
     #Read Channel_CH1
     valCH1=test.Request_CH1()
     CH1 = []
